@@ -19,4 +19,5 @@ public class User {
     private List<Link> links;
     @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private UserAccount account;
+
 }
