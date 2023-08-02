@@ -12,10 +12,10 @@ public class Transfer {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private LocalDateTime date;
- /*   @ManyToOne
+@ManyToOne
     private User from;
     @ManyToOne
-    private User to;*/
+    private User to;
     private Double amounteBeforeFee;
     private Double amountAfterFee;
 
