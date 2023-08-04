@@ -5,7 +5,6 @@ import com.riad8321.flashcash.model.UserAccount;
 import com.riad8321.flashcash.repository.AccountRepository;
 import com.riad8321.flashcash.repository.UserRepository;
 import com.riad8321.flashcash.service.form.SignUpForm;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -23,16 +22,17 @@ public class UserService {
     }
 
 
-    public User registration(SignUpForm form) {
-        User user = new User();
-//        UserAccount UserAccount = new UserAccount();
-//        account.SetAmount(0.0);
-//        user.setAccount(account);
-        user.setFirstName(form.getFirstName());
-        user.setLastName(form.getLastName());
-        user.setEmail(form.getEmail());
-        user.setPassword(passwordEncoder.encode(form.getPassword()));
-        return userRepository.save(user);
+    public User registration(SignUpForm form) {User user = new User();
+
+      UserAccount account = new UserAccount();
+      account.setAmount(0.0);
+      user.setAccount(account);
+      user.setFirstName(form.getFirstName());
+      user.setLastName(form.getLastName());
+      user.setEmail(form.getEmail());
+      user.setPassword(passwordEncoder.encode(form.getPassword()));
+
+      return userRepository.save(user);
     }
 }
 
