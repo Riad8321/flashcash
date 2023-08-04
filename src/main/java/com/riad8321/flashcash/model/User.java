@@ -21,8 +21,8 @@ public class User {
     @NotBlank
     @Email
     private String email;
-    @NotBlank
-    @Size(min = 8, max = 15)
+//    @NotBlank
+//    @Size(min = 8, max = 15)
     private String password;
     @ManyToMany
     private List<Link> links;

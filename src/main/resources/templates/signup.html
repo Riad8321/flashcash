@@ -8,7 +8,7 @@
 </head>
 <body class="signup-form">
 
-<form action="signUpForm" method="post">
+<form th:action="@{/signup}" th:object="${signUpForm}" method="POST">
     <div class="container pt-4 bg-dark">
         <div class="row d-flex justify-content-center">
             <div class="col-6">

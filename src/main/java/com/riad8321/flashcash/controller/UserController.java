@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 
-@Controller // Ajoutez cette annotation pour indiquer que c'est un contrôleur
+@Controller
 public class UserController {
     private final UserService userService;
 
@@ -23,7 +23,7 @@ public class UserController {
     public ModelAndView precessRequest(@ModelAttribute("signUpForm") SignUpForm form) {
        System.out.println(form.toString());
        userService.registration(form);
-       return new ModelAndView("signup-result");
+       return new ModelAndView("signin");
     }
 
 
