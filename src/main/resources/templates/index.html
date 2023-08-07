@@ -5,9 +5,17 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Flash Cash</title>
+    <title>Flash Cash - Home page</title>
+    <link rel="stylesheet" href="styles/style.css">
 </head>
 <body>
-    <h4>Welcome to Thymeleaf Spring Boot web application</h4>
+    <div class="container pt-4">
+        <div class="row d-flex justify-content-center">
+            <h4 class="text-center mt-3 mb-5">Welcome to Flash Cash application</h4>
+            <div class="col-6">
+                <img th:src="@{/images/flashcash.png}" class="img-fluid"/>
+            </div>
+        </div>
+    </div>
 </body>
 </html>

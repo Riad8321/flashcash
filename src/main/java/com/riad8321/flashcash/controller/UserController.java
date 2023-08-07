@@ -26,6 +26,11 @@ public class UserController {
        return new ModelAndView("signin");
     }
 
+    @GetMapping("/signin")
+    public ModelAndView showConnectionForm() {
+        return new ModelAndView("signin", "signinForm", new SignUpForm());
+    }
+
 
     @GetMapping("/index")
     public String index() {

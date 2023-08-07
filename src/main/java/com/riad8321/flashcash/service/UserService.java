@@ -22,7 +22,8 @@ public class UserService {
     }
 
 
-    public User registration(SignUpForm form) {User user = new User();
+    public User registration(SignUpForm form) {
+        User user = new User();
 
       UserAccount account = new UserAccount();
       account.setAmount(0.0);
@@ -34,6 +35,9 @@ public class UserService {
 
       return userRepository.save(user);
     }
+
+    public Iterable<User> getUsers() { return userRepository.findAll();}
+
 }
 
 

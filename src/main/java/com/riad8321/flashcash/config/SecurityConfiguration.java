@@ -16,12 +16,12 @@ public class SecurityConfiguration {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
                 .authorizeHttpRequests((requests) -> requests
-                        .requestMatchers("/styles/style.css","/styles/index.css", "/images/**", "/signin", "/signup").permitAll()
+                        .requestMatchers("/styles/style.css","/styles/index.css", "/images/**", "/signup", "/signin").permitAll()
                         .anyRequest().authenticated()
                 )
                 .formLogin((form) -> form
                         .loginPage("/signin")
-                        .permitAll().usernameParameter("email").defaultSuccessUrl("/,", true)
+                        .permitAll().usernameParameter("email").defaultSuccessUrl("/", true)
                 )
                 .logout((logout) -> logout.permitAll());
         return http.build();
