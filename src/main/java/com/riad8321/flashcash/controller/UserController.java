@@ -1,18 +1,26 @@
 package com.riad8321.flashcash.controller;
 
+
+import com.riad8321.flashcash.model.User;
+import com.riad8321.flashcash.service.SessionService;
 import com.riad8321.flashcash.service.UserService;
 import com.riad8321.flashcash.service.form.SignUpForm;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 
 @Controller
 public class UserController {
     private final UserService userService;
+    private final SessionService sessionService;
 
-    public UserController(UserService userService) {
+    public UserController(UserService userService, SessionService sessionService) {
         this.userService = userService;
+        this.sessionService = sessionService;
     }
     @GetMapping("/signup")
     public ModelAndView showRegisterForm() {
@@ -26,14 +34,36 @@ public class UserController {
        return new ModelAndView("signin");
     }
 
-    @GetMapping("/signin")
-    public ModelAndView showConnectionForm() {
-        return new ModelAndView("signin", "signinForm", new SignUpForm());
+    @GetMapping("profile")
+    public ModelAndView profile(Model model) {
+        User user = sessionService.sessionUser();
+        model.addAttribute("user", user);
+        return new ModelAndView("profile");
     }
 
 
     @GetMapping("/index")
-    public String index() {
+    public ModelAndView index(Model model) {
+        User user = sessionService.sessionUser();
+        model.addAttribute("user", user);
+        return new ModelAndView("index");
+    }
+
+    @GetMapping("/logout")
+    public String logOff(Model model) {
         return "index";
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
