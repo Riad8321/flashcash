@@ -36,9 +36,29 @@
 
 <div class="container">
 
-  <h1 class="text-center mt-5 mb-5">Transfers Page</h1>
+  <h1 class="text-center mt-5 mb-5">Withdraw to your bank account</h1>
+  <h2>Your IBAN</h2>
+  <table class="table">
+    <thead>
+    <tr>
+      <th scope="col">IBAN</th>
+      <th scope="col">BANK</th>
+      <th scope="col">Country</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+      <th scope="row" th:text="${user != null ? user.account.iban : ''}">1</th>
+<!--      th:text="${user != null ? user.account.iban : ''}"-->
+<!--      <td th:text="${user != null ? user.account.iban : ''}"></td>-->
+      <td>Crédit Lyonnais</td>
+      <td>France</td>
+    </tr>
+    <tr>
+    </tbody>
+  </table>
 
-  <form  th:action="@{/add-iban}" th:object="${addIbanForm}" method="POST">
+  <form th:action="@{/withdraw}" th:object="${WithdrawCashForm}" method="POST">
     <div class="container pt-4">
       <div class="row d-flex justify-content-center">
         <div class="col-6">
@@ -46,43 +66,20 @@
         </div>
       </div>
       <div class="row d-flex justify-content-center">
-        <div class="col-6">
+        <div class="col-3">
           <div class="form-group">
-            <!--            <label for="iban">Add you IBAN number</label>-->
-            <input type="text" class="form-control" id="iban" name="iban" placeholder="Add an IBAN">
+<!--            <label for="iban">Add you IBAN number</label>-->
+            <input type="text" name="amount" id="amount" class="form-control form-control-lg mb-2" size="17"
+                   placeholder="0.00" minlength="1" maxlength="8" />
           </div>
 
           <div class="form-group pt-2 pb-1">
-            <input type="submit" value="ADD IBAN" class="btn btn-primary btn-lg">
+            <input type="submit" value="Withdraw" class="btn btn-primary btn-lg">
           </div>
-        </div>
       </div>
     </div>
+    </div>
   </form>
-
-  <h4>Your transfers</h4>
-  <table class="table">
-    <thead>
-    <tr>
-      <th scope="col">Date</th>
-      <th scope="col">Contact</th>
-      <th scope="col">Amount</th>
-      <th scope="col">Fees</th>
-      <th scope="col">Total</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr>
-      <th scope="row">13/08/23 - 13:56</th>
-      <!--      th:text="${user != null ? user.account.iban : ''}"-->
-      <td>John</td>
-      <td>50.00€</td>
-      <td>0.25€</td>
-      <td>50.25€</td>
-    </tr>
-    <tr>
-    </tbody>
-  </table>
 
 </div>
 

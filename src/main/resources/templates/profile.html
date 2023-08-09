@@ -9,9 +9,8 @@
     <title>Flash Cash - Home page</title>
     <link rel="stylesheet" href="styles/style.css">
 </head>
-<body class="container h-100">
+<body class="container navbar-expand-lg navbar-light bg-light">
 <header>
-
     <nav class="navbar navbar-expand-lg navbar-light bg-light d-flex align-items-center">
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <a class="navbar-brand" href="/index" th:href="@{/index}">
@@ -19,7 +18,7 @@
             </a>
             <div class="navbar-nav">
                 <a class="nav-item nav-link active" href="/" th:href="@{/}">Home</a>
-                <a class="nav-item nav-link" href="#">Transfers</a>
+                <a class="nav-item nav-link" href="/transfers" th:href="@{/transfers}">Transfers</a>
                 <a href="/profile" th:href="@{/profile}" class="nav-item nav-link">Profile</a>
                 <a class="nav-item nav-link" href="#">Contact</a>
             </div>
@@ -31,7 +30,6 @@
             </a>
         </div>
     </nav>
-
 </header>
 
 
@@ -39,35 +37,34 @@
     <div class="hero-unit">
         <h1 class="text-center mt-5">My profile</h1>
 
-        <div class="card-group row d-flex text-center justify-content-around mt-5">
+        <div class="row d-flex text-center justify-content-around mt-5">
 
-            <div class="card border-info mb-3 col-3 " style="max-width: 18rem;">
-                <div class="card-header">Add cash to Flash Cash</div>
+            <div class="card border-info mb-3 col-3 ">
+                <div class="card-header rounded-0 bg-info">Add cash to Flash Cash</div>
                 <div class="card-body">
                     <h5 class="card-title">Light card title</h5>
                     <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    <a href="/add-cash" th:href="@{/add-cash}" class="btn btn-primary mt-3">Start</a>
+                    <a href="/add-cash" th:href="@{/add-cash}" class="btn text-white btn-info mt-3">ADD CASH</a>
                 </div>
             </div>
 
-            <div class="card border-info mb-3 col-3 " style="max-width: 18rem;">
-                <div class="card-header">Transfer to your bank</div>
+            <div class="card border-warning mb-3 col-3">
+                <div class="card-header rounded-0 bg-warning">Transfer to your bank</div>
                 <div class="card-body">
                     <h5 class="card-title">Light card title</h5>
                     <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    <a href="#" class="btn btn-primary mt-3">Start</a>
+                    <a href="/withdraw" th:href="@{/withdraw}" class="btn btn-warning mt-3">WITHDRAW</a>
                 </div>
             </div>
 
-            <div class="card border-info mb-3 col-3 " style="max-width: 18rem;">
-                <div class="card-header">Add an IBAN</div>
+            <div class="card border-dark mb-3 col-3">
+                <div class="card-header rounded-0 bg-dark text-white">Add Bank Account</div>
                 <div class="card-body">
                     <h5 class="card-title">Light card title</h5>
                     <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    <a href="/add-iban" th:href="@{/add-iban}" class="btn btn-primary mt-3">Start</a>
+                    <a href="/add-iban" th:href="@{/add-iban}" class="btn btn-dark text-white mt-3">ADD IBAN</a>
                 </div>
             </div>
-
 
         </div>
 

@@ -7,6 +7,7 @@ import com.riad8321.flashcash.service.UserService;
 import com.riad8321.flashcash.service.form.AddCashForm;
 import com.riad8321.flashcash.service.form.AddIbanForm;
 import com.riad8321.flashcash.service.form.SignUpForm;
+import com.riad8321.flashcash.service.form.WithdrawCashForm;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -62,7 +63,7 @@ public class UserController {
     public ModelAndView addIbanRegisterForm(Model model, @ModelAttribute("addIbanForm") AddIbanForm form) {
         User user = sessionService.sessionUser();
         userService.ibanRegistration(form);
-        model.addAttribute("user, user");
+        model.addAttribute("user", user);
         return new ModelAndView("add-iban");
     }
 
@@ -77,8 +78,23 @@ public class UserController {
     public ModelAndView showAddCashForm(Model model, @ModelAttribute("addCashForm") AddCashForm form) {
         User user = sessionService.sessionUser();
         userService.addCash(form);
-        model.addAttribute("user, user");
+        model.addAttribute("user", user);
         return new ModelAndView("add-cash");
+    }
+
+    @GetMapping("/withdraw")
+    public ModelAndView showWithdrawCash(Model model) {
+        User user = sessionService.sessionUser();
+        model.addAttribute("user", user);
+        return new ModelAndView("withdraw", "WithdrawCashForm", new WithdrawCashForm());
+    }
+
+    @PostMapping(path="/withdraw")
+    public ModelAndView showWithdrawCashForm(Model model, @ModelAttribute("withdrawCashForm") WithdrawCashForm form) {
+        User user = sessionService.sessionUser();
+        userService.withdrawCash(form);
+        model.addAttribute("user", user);
+        return new ModelAndView("withdraw");
     }
 
     @GetMapping(path="/transfers")

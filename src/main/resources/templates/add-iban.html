@@ -9,17 +9,17 @@
   <title>Flash Cash - Home page</title>
   <link rel="stylesheet" href="styles/style.css">
 </head>
-<body class="container h-100">
-<header>
+<body class="container navbar-expand-lg navbar-light bg-light">
 
+<header>
   <nav class="navbar navbar-expand-lg navbar-light bg-light d-flex align-items-center">
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-      <a class="navbar-brand" href="/" th:href="@{/index}">
+      <a class="navbar-brand" href="/index" th:href="@{/index}">
         <img th:src="@{/images/flashcash.png}" width="120" height="60" class="d-inline-block align-top" alt="">
       </a>
       <div class="navbar-nav">
         <a class="nav-item nav-link active" href="/" th:href="@{/}">Home</a>
-        <a class="nav-item nav-link" href="#">Transfers</a>
+        <a class="nav-item nav-link" href="/transfers" th:href="@{/transfers}">Transfers</a>
         <a href="/profile" th:href="@{/profile}" class="nav-item nav-link">Profile</a>
         <a class="nav-item nav-link" href="#">Contact</a>
       </div>
@@ -31,7 +31,6 @@
       </a>
     </div>
   </nav>
-
 </header>
 
 

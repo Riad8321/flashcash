@@ -10,25 +10,28 @@
     <link rel="stylesheet" href="styles/style.css">
 </head>
 <body class="container navbar-expand-lg navbar-light bg-light">
-<nav class="navbar navbar-expand-lg navbar-light bg-light mb-5">
-    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-        <a class="navbar-brand" href="/index" th:href="@{/index}">
-            <img th:src="@{/images/flashcash.png}" width="120" height="60" class="d-inline-block align-top" alt="">
-        </a>
-        <div class="navbar-nav">
-            <a class="nav-item nav-link active" href="/" th:href="@{/}">Home</a>
-            <a class="nav-item nav-link" href="#">Transfers</a>
-            <a href="/profile" th:href="@{/profile}" class="nav-item nav-link">Profile</a>
-            <a class="nav-item nav-link" href="#">Contact</a>
+
+<header>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light d-flex align-items-center">
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <a class="navbar-brand" href="/index" th:href="@{/index}">
+                <img th:src="@{/images/flashcash.png}" width="120" height="60" class="d-inline-block align-top" alt="">
+            </a>
+            <div class="navbar-nav">
+                <a class="nav-item nav-link active" href="/" th:href="@{/}">Home</a>
+                <a class="nav-item nav-link" href="/transfers" th:href="@{/transfers}">Transfers</a>
+                <a href="/profile" th:href="@{/profile}" class="nav-item nav-link">Profile</a>
+                <a class="nav-item nav-link" href="#">Contact</a>
+            </div>
         </div>
-    </div>
-    <div class="d-flex align-content-center">
-        <a href="/profile" th:href="@{/profile}" class="nav-item nav-link">
-            <p th:text="${user.email}"></p>
-            <a class="nav-item nav-link text-danger" href="#">Log out</a>
-        </a>
-    </div>
-</nav>
+        <div class="d-flex align-content-center">
+            <a href="/profile" th:href="@{/profile}" class="nav-item nav-link">
+                <p th:text="${user.email}"></p>
+                <a class="nav-item nav-link text-danger" href="#">Log out</a>
+            </a>
+        </div>
+    </nav>
+</header>
 
         <!-- ============================================================================ -->
         <!-- This content is only used for static prototyping purposes (natural templates)-->
@@ -46,7 +49,7 @@
                         <div class="card-body">
                             <h5 class="card-title">Your solde</h5>
                             <h2 class="card-text pt-4" th:text="${user.account.amount} + '€'"></h2>
-                            <a href="#" class="btn btn-primary mt-3">Recharge your account</a>
+                            <a href="/add-cash" th:href="@{/add-cash}" class="btn btn-primary mt-3">Recharge your account</a>
                         </div>
                     </div>
                 </div>
