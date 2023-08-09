@@ -1,0 +1,97 @@
+<!doctype html>
+<html xmlns:th="https://thymeleaf.org">
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Flash Cash - Home page</title>
+  <link rel="stylesheet" href="styles/style.css">
+</head>
+<body class="container h-100">
+<header>
+
+  <nav class="navbar navbar-expand-lg navbar-light bg-light d-flex align-items-center">
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <a class="navbar-brand" href="/index" th:href="@{/index}">
+        <img th:src="@{/images/flashcash.png}" width="120" height="60" class="d-inline-block align-top" alt="">
+      </a>
+      <div class="navbar-nav">
+        <a class="nav-item nav-link active" href="/index" th:href="@{/index}">Home</a>
+        <a class="nav-item nav-link" href="#">Transfers</a>
+        <a href="/profile" th:href="@{/profile}" class="nav-item nav-link">Profile</a>
+        <a class="nav-item nav-link" href="#">Contact</a>
+      </div>
+    </div>
+    <div class="d-flex align-content-center">
+      <a href="/profile" th:href="@{/profile}" class="nav-item nav-link">
+        <p th:text="${user.email}"></p>
+        <a class="nav-item nav-link text-danger" href="#">Log out</a>
+      </a>
+    </div>
+  </nav>
+
+</header>
+
+
+<div class="container">
+
+  <h1 class="text-center mt-5 mb-5">Save your bank account</h1>
+  <h2>Your IBAN</h2>
+  <table class="table">
+    <thead>
+    <tr>
+      <th scope="col">IBAN</th>
+      <th scope="col">BANK</th>
+      <th scope="col">Country</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+      <th scope="row" th:text="${user != null ? user.account.iban : ''}">1</th>
+<!--      th:text="${user != null ? user.account.iban : ''}"-->
+<!--      <td th:text="${user != null ? user.account.iban : ''}"></td>-->
+      <td>Crédit Lyonnais</td>
+      <td>France</td>
+    </tr>
+    <tr>
+    </tbody>
+  </table>
+
+  <form  th:action="@{/add-iban}" th:object="${addIbanForm}" method="POST">
+    <div class="container pt-4">
+      <div class="row d-flex justify-content-center">
+        <div class="col-6">
+          <img th:src="@{/images/banque.png}" class="mx-auto d-block mb-3"/>
+        </div>
+      </div>
+      <div class="row d-flex justify-content-center">
+        <div class="col-6">
+          <div class="form-group">
+<!--            <label for="iban">Add you IBAN number</label>-->
+            <input type="text" class="form-control" id="iban" name="iban" placeholder="Add an IBAN">
+          </div>
+
+          <div class="form-group pt-2 pb-1">
+            <input type="submit" value="ADD IBAN" class="btn btn-primary btn-lg">
+          </div>
+      </div>
+    </div>
+    </div>
+  </form>
+
+</div>
+
+<footer class=" footer py-3 my-4">
+  <ul class="nav justify-content-center border-bottom pb-3 mb-3 mt-4">
+    <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">FAQS</a></li>
+    <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Why using Flash Cash</a></li>
+    <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Live chat</a></li>
+    <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Contact us</a></li>
+    <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Team</a></li>
+  </ul>
+  <p class="text-center text-muted">© 2023 Flash Cash, Inc</p>
+</footer>
+</body>
+</html>

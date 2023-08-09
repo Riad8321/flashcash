@@ -19,15 +19,15 @@
             </a>
             <div class="navbar-nav">
                 <a class="nav-item nav-link active" href="/index" th:href="@{/index}">Home</a>
-                <a class="nav-item nav-link" href="#">Trasfers</a>
+                <a class="nav-item nav-link" href="#">Transfers</a>
                 <a href="/profile" th:href="@{/profile}" class="nav-item nav-link">Profile</a>
                 <a class="nav-item nav-link" href="#">Contact</a>
-                <a class="nav-item nav-link" href="#">Log out</a>
             </div>
         </div>
-        <div>
+        <div class="d-flex align-content-center">
             <a href="/profile" th:href="@{/profile}" class="nav-item nav-link">
                 <p th:text="${user.email}"></p>
+                <a class="nav-item nav-link text-danger" href="#">Log out</a>
             </a>
         </div>
     </nav>
@@ -51,7 +51,7 @@
             </div>
 
             <div class="card border-info mb-3 col-3 " style="max-width: 18rem;">
-                <div class="card-header">Add cash to Flash Cash</div>
+                <div class="card-header">Transfer to your bank</div>
                 <div class="card-body">
                     <h5 class="card-title">Light card title</h5>
                     <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
@@ -60,11 +60,11 @@
             </div>
 
             <div class="card border-info mb-3 col-3 " style="max-width: 18rem;">
-                <div class="card-header">Add cash to Flash Cash</div>
+                <div class="card-header">Add an IBAN</div>
                 <div class="card-body">
                     <h5 class="card-title">Light card title</h5>
                     <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    <a href="#" class="btn btn-primary mt-3">Start</a>
+                    <a href="/add-iban" th:href="@{/add-iban}" class="btn btn-primary mt-3">Start</a>
                 </div>
             </div>
 

@@ -4,6 +4,7 @@ import com.riad8321.flashcash.model.User;
 import com.riad8321.flashcash.model.UserAccount;
 import com.riad8321.flashcash.repository.AccountRepository;
 import com.riad8321.flashcash.repository.UserRepository;
+import com.riad8321.flashcash.service.form.AddIbanForm;
 import com.riad8321.flashcash.service.form.SignUpForm;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -14,11 +15,13 @@ public class UserService {
     private final PasswordEncoder passwordEncoder;
     private final UserRepository userRepository;
     private final AccountRepository accountRepository;
+    private final SessionService sessionService;
 
-    public UserService(UserRepository userRepository, AccountRepository accountRepository, PasswordEncoder passwordEncoder) {
+    public UserService(UserRepository userRepository, AccountRepository accountRepository, PasswordEncoder passwordEncoder, SessionService sessionService) {
             this.passwordEncoder = passwordEncoder;
             this.accountRepository = accountRepository;
             this.userRepository = userRepository;
+            this.sessionService = sessionService;
     }
 
 
@@ -35,6 +38,20 @@ public class UserService {
 
       return userRepository.save(user);
     }
+
+    public UserAccount ibanRegistration(AddIbanForm form) {
+        UserAccount account= sessionService.sessionUser().getAccount();
+        account.setIban(form.getIban());
+
+        return accountRepository.save(account);
+    }
+
+//    User user = sessionService.sessionUser(); // Utilisez l'instance de sessionService
+//    UserAccount userAccount = user.getAccount();
+//    userAccount.setIban(form.getIban());
+//    accountRepository.save(userAccount);
+//    return userAccount;
+
 
     public Iterable<User> getUsers() { return userRepository.findAll();}
 

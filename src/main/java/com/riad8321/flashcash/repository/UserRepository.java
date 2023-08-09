@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 import java.util.Optional;
 
 @Repository
-public interface UserRepository extends CrudRepository<User, Long> {
+public interface UserRepository extends CrudRepository<User, String> {
     @Query(value="SELECT u FROM User LEFT JOIN FETCH u .links WHERE u.email=:email ")
     public Optional<User> findUserByEmail(String email);
 }

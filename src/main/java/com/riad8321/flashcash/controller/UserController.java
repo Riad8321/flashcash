@@ -4,6 +4,7 @@ package com.riad8321.flashcash.controller;
 import com.riad8321.flashcash.model.User;
 import com.riad8321.flashcash.service.SessionService;
 import com.riad8321.flashcash.service.UserService;
+import com.riad8321.flashcash.service.form.AddIbanForm;
 import com.riad8321.flashcash.service.form.SignUpForm;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -47,6 +48,21 @@ public class UserController {
         User user = sessionService.sessionUser();
         model.addAttribute("user", user);
         return new ModelAndView("index");
+    }
+
+    @GetMapping("/add-iban")
+    public ModelAndView showIbanRegisterForm(Model model) {
+        User user = sessionService.sessionUser();
+        model.addAttribute("user", user);
+        return new ModelAndView("add-iban");
+    }
+
+    @PostMapping(path="/add-iban")
+    public ModelAndView addIbanRegisterForm(@ModelAttribute("addIbanForm") AddIbanForm form) {
+        User user = sessionService.sessionUser();
+        System.out.println(form.toString());
+        userService.ibanRegistration(form);
+        return new ModelAndView("add-iban");
     }
 
     @GetMapping("/logout")
