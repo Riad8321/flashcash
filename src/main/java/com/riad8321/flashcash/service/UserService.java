@@ -4,6 +4,7 @@ import com.riad8321.flashcash.model.User;
 import com.riad8321.flashcash.model.UserAccount;
 import com.riad8321.flashcash.repository.AccountRepository;
 import com.riad8321.flashcash.repository.UserRepository;
+import com.riad8321.flashcash.service.form.AddCashForm;
 import com.riad8321.flashcash.service.form.AddIbanForm;
 import com.riad8321.flashcash.service.form.SignUpForm;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -42,6 +43,13 @@ public class UserService {
     public UserAccount ibanRegistration(AddIbanForm form) {
         UserAccount account= sessionService.sessionUser().getAccount();
         account.setIban(form.getIban());
+
+        return accountRepository.save(account);
+    }
+
+    public UserAccount addCash(AddCashForm form) {
+        UserAccount account= sessionService.sessionUser().getAccount();
+        account.plus(form.getAmount());
 
         return accountRepository.save(account);
     }
