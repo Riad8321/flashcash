@@ -82,9 +82,9 @@ public class UserController {
     }
 
     @GetMapping(path="/transfers")
-    public ModelAndView trasfers(Model model) {
+    public ModelAndView transfers(Model model) {
         User user = sessionService.sessionUser();
-        model.addAttribute("user, user");
+        model.addAttribute("user", user);
         return new ModelAndView("transfers");
     }
 
