@@ -18,7 +18,7 @@
                 <img th:src="@{/images/flashcash.png}" width="120" height="60" class="d-inline-block align-top" alt="">
             </a>
             <div class="navbar-nav">
-                <a class="nav-item nav-link active" href="/index" th:href="@{/index}">Home</a>
+                <a class="nav-item nav-link active" href="/" th:href="@{/}">Home</a>
                 <a class="nav-item nav-link" href="#">Transfers</a>
                 <a href="/profile" th:href="@{/profile}" class="nav-item nav-link">Profile</a>
                 <a class="nav-item nav-link" href="#">Contact</a>
@@ -46,7 +46,7 @@
                 <div class="card-body">
                     <h5 class="card-title">Light card title</h5>
                     <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    <a href="#" class="btn btn-primary mt-3">Start</a>
+                    <a href="/add-cash" th:href="@{/add-cash}" class="btn btn-primary mt-3">Start</a>
                 </div>
             </div>
 
