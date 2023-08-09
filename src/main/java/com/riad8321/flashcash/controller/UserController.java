@@ -7,10 +7,6 @@ import com.riad8321.flashcash.service.UserService;
 import com.riad8321.flashcash.service.form.AddCashForm;
 import com.riad8321.flashcash.service.form.AddIbanForm;
 import com.riad8321.flashcash.service.form.SignUpForm;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
-import org.apache.tomcat.util.net.openssl.ciphers.Authentication;
-import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -85,12 +81,13 @@ public class UserController {
         return new ModelAndView("add-cash");
     }
 
-
-    @PostMapping("/logout")
-    public String performLogout() {
-
-        return "redirect:/";
+    @GetMapping(path="/transfers")
+    public ModelAndView trasfers(Model model) {
+        User user = sessionService.sessionUser();
+        model.addAttribute("user, user");
+        return new ModelAndView("transfers");
     }
+
 }
 
 
