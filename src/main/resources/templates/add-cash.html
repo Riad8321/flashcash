@@ -12,7 +12,7 @@
 </head>
 <body class="container navbar-expand-lg navbar-light bg-light">
 
-<header>
+<header class="sticky-top">
   <nav class="navbar navbar-expand-lg navbar-light bg-light d-flex align-items-center">
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <a class="navbar-brand" href="/index" th:href="@{/index}">
@@ -25,7 +25,7 @@
         <a class="nav-item nav-link" href="#">Contact</a>
       </div>
     </div>
-    <div class="d-flex align-content-center">
+    <div class="d-flex align-content-center gap-1">
       <a href="/profile" th:href="@{/profile}" class="nav-item nav-link">
         <p th:text="${user.email}"></p>
         <a class="nav-item nav-link text-danger" href="#">Log out</a>
@@ -34,13 +34,15 @@
   </nav>
 </header>
 
-<h1 class="text-center mt-5 mb-5">Add cash to you Account</h1>
+<div class="alert alert-primary text-center mt-5 mb-1" role="alert">
+  Add cash to you Account
+</div>
 
-<section class="gradient-custom">
-  <div class="container my-5 py-5">
+<section class="">
+  <div class="container py-2">
     <div class="row d-flex justify-content-center py-5">
       <div class="col-md-7 col-lg-5 col-xl-4">
-        <div class="card" style="border-radius: 15px;">
+        <div class="card shadow p-3 mb-5 bg-body-tertiary" style="border-radius: 15px;">
           <div class="card-body p-4">
             <form th:action="@{/add-cash}" th:object="${addCAshForm}" method="POST">
               <div class="d-flex justify-content-between align-items-center mb-3">
@@ -50,6 +52,7 @@
                   <label class="form-label" for="amount">Amount</label>
                   <input type="text" id="typeText" class="form-control form-control-lg" size="17"
                          placeholder="1234 5678 9012 3457" minlength="19" maxlength="19" />
+                  <img src="https://img.icons8.com/color/48/000000/mastercard.png" alt="visa" width="64px" />
                   <img src="https://img.icons8.com/color/48/000000/visa.png" alt="visa" width="64px" />
                   <label class="form-label" for="typeText">Card Number</label>
                 </div>

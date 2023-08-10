@@ -3,6 +3,8 @@ package com.riad8321.flashcash.model;
 import jakarta.persistence.*;
 import lombok.Data;
 
+import java.util.Optional;
+
 @Data
 @Entity
 public class Link {
@@ -13,4 +15,5 @@ public class Link {
     User user1;
     @ManyToOne
     User user2;
+
 }

@@ -6,7 +6,7 @@
   <meta name="viewport"
         content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Flash Cash - Home page</title>
+  <title>Flash Cash - Add Contact</title>
   <link rel="stylesheet" href="styles/style.css">
 </head>
 <body class="container navbar-expand-lg navbar-light bg-light">
@@ -36,49 +36,55 @@
 
 <div class="container">
 
-  <h1 class="text-center mt-5 mb-5">Save your bank account</h1>
-  <h2>Your IBAN</h2>
+  <h1 class="text-center mt-5 mb-3">Conatct List</h1>
+
+  <form th:action="@{/add-contact}" th:object="${AddContactForm}" method="POST">
+    <div class="container pt-4">
+      <div class="row d-flex justify-content-center">
+        <div class="col-6">
+          <img th:src="@{/images/add-user.png}" class="mx-auto d-block mb-3"/>
+        </div>
+      </div>
+      <div class="row d-flex justify-content-center">
+        <div class="col-3">
+          <div class="form-group">
+            <label for="email">Add your contact email here :</label>
+            <input type="email" name="email" id="email" class="form-control form-control-lg mb-2" size="17"
+                   placeholder="email adress" minlength="6" maxlength="255" />
+          </div>
+
+          <div class="form-group pt-2 pb-1">
+            <input type="submit" value="ADD CONTACT" class="btn btn-primary btn-lg">
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+
+  <h2 class="mt-5">Your contact in flash cash</h2>
   <table class="table">
     <thead>
     <tr>
-      <th scope="col">IBAN</th>
-      <th scope="col">BANK</th>
-      <th scope="col">Country</th>
+      <th scope="col">ID</th>
+      <th scope="col">First Name</th>
+      <th scope="col">Last Name</th>
+      <th scope="col">Email</th>
     </tr>
     </thead>
     <tbody>
     <tr>
-      <th scope="row" th:text="${user != null ? user.account.iban : ''}">1</th>
-<!--      th:text="${user != null ? user.account.iban : ''}"-->
-<!--      <td th:text="${user != null ? user.account.iban : ''}"></td>-->
-      <td>Crédit Lyonnais</td>
-      <td>France</td>
+      <th scope="row">1</th>
+      <!--      th:text="${user != null ? user.account.iban : ''}"-->
+      <!--      <td th:text="${user != null ? user.account.iban : ''}"></td>-->
+      <td>John</td>
+      <td>Doe</td>
+      <td>john.doe@gmail.com</td>
     </tr>
     <tr>
     </tbody>
   </table>
 
-  <form  th:action="@{/add-iban}" th:object="${addIbanForm}" method="POST">
-    <div class="container pt-4">
-      <div class="row d-flex justify-content-center">
-        <div class="col-6">
-          <img th:src="@{/images/banque.png}" class="mx-auto d-block mb-3"/>
-        </div>
-      </div>
-      <div class="row d-flex justify-content-center">
-        <div class="col-6">
-          <div class="form-group">
-<!--            <label for="iban">Add you IBAN number</label>-->
-            <input type="text" class="form-control" id="iban" name="iban" placeholder="Add an IBAN">
-          </div>
 
-          <div class="form-group pt-2 pb-1">
-            <input type="submit" value="ADD IBAN" class="btn btn-primary btn-lg">
-          </div>
-      </div>
-    </div>
-    </div>
-  </form>
 
 </div>
 

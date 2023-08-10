@@ -2,12 +2,10 @@ package com.riad8321.flashcash.controller;
 
 
 import com.riad8321.flashcash.model.User;
+import com.riad8321.flashcash.service.LinkService;
 import com.riad8321.flashcash.service.SessionService;
 import com.riad8321.flashcash.service.UserService;
-import com.riad8321.flashcash.service.form.AddCashForm;
-import com.riad8321.flashcash.service.form.AddIbanForm;
-import com.riad8321.flashcash.service.form.SignUpForm;
-import com.riad8321.flashcash.service.form.WithdrawCashForm;
+import com.riad8321.flashcash.service.form.*;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,10 +18,12 @@ import org.springframework.web.servlet.ModelAndView;
 public class UserController {
     private final UserService userService;
     private final SessionService sessionService;
+    private final LinkService linkService;
 
-    public UserController(UserService userService, SessionService sessionService) {
+    public UserController(UserService userService, SessionService sessionService, LinkService linkService) {
         this.userService = userService;
         this.sessionService = sessionService;
+        this.linkService = linkService;
     }
     @GetMapping("/signup")
     public ModelAndView showRegisterForm() {
@@ -96,6 +96,23 @@ public class UserController {
         model.addAttribute("user", user);
         return new ModelAndView("withdraw");
     }
+
+    @GetMapping("/add-contact")
+    public ModelAndView showAddContactCash(Model model) {
+        User user = sessionService.sessionUser();
+        model.addAttribute("user", user);
+        return new ModelAndView("add-contact", "AddContactForm", new AddContactForm());
+    }
+
+    @PostMapping("/add-contact")
+    public ModelAndView addContactCash(Model model, @ModelAttribute("AddContactForm") AddContactForm form) {
+        System.out.println(form);
+        linkService.addContact(form);
+        User user = sessionService.sessionUser();
+        model.addAttribute("user", user);
+        return new ModelAndView("add-contact");
+    }
+
 
     @GetMapping(path="/transfers")
     public ModelAndView transfers(Model model) {

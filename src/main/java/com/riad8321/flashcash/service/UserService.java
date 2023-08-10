@@ -1,15 +1,15 @@
 package com.riad8321.flashcash.service;
 
+import com.riad8321.flashcash.model.Link;
 import com.riad8321.flashcash.model.User;
 import com.riad8321.flashcash.model.UserAccount;
 import com.riad8321.flashcash.repository.AccountRepository;
 import com.riad8321.flashcash.repository.UserRepository;
-import com.riad8321.flashcash.service.form.AddCashForm;
-import com.riad8321.flashcash.service.form.AddIbanForm;
-import com.riad8321.flashcash.service.form.SignUpForm;
-import com.riad8321.flashcash.service.form.WithdrawCashForm;
+import com.riad8321.flashcash.service.form.*;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service("UserService")
 public class UserService {
@@ -61,7 +61,6 @@ public class UserService {
 
         return accountRepository.save(account);
     }
-
 
 
     public Iterable<User> getUsers() { return userRepository.findAll();}
