@@ -55,11 +55,12 @@ public class UserService {
         return accountRepository.save(account);
     }
 
-    public UserAccount withdrawCash(WithdrawCashForm form) {
-        UserAccount account = sessionService.sessionUser().getAccount();
-        account.minus(form.getAmount());
+    public void withdrawCash(WithdrawCashForm form) {
+        if (form != null) {
+            accountRepository.save(sessionService.sessionUser().getAccount().minus(form.getAmount()));
+        } else {
 
-        return accountRepository.save(account);
+        }
     }
 
 

@@ -1,7 +1,10 @@
 package com.riad8321.flashcash.controller;
 
 
+import com.riad8321.flashcash.model.Link;
 import com.riad8321.flashcash.model.User;
+import com.riad8321.flashcash.repository.ContactListRepository;
+import com.riad8321.flashcash.service.ContactListService;
 import com.riad8321.flashcash.service.LinkService;
 import com.riad8321.flashcash.service.SessionService;
 import com.riad8321.flashcash.service.UserService;
@@ -13,17 +16,26 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 
 @Controller
 public class UserController {
     private final UserService userService;
     private final SessionService sessionService;
     private final LinkService linkService;
+    private final ContactListService contactListService;
+    private final ContactListRepository contactListRepository;
 
-    public UserController(UserService userService, SessionService sessionService, LinkService linkService) {
+
+
+    public UserController(UserService userService, SessionService sessionService, LinkService linkService, ContactListService contactListService, ContactListRepository contactListRepository) {
         this.userService = userService;
         this.sessionService = sessionService;
         this.linkService = linkService;
+        this.contactListService = contactListService;
+        this.contactListRepository = contactListRepository;
     }
     @GetMapping("/signup")
     public ModelAndView showRegisterForm() {
@@ -79,7 +91,7 @@ public class UserController {
         User user = sessionService.sessionUser();
         userService.addCash(form);
         model.addAttribute("user", user);
-        return new ModelAndView("add-cash");
+        return new ModelAndView("index");
     }
 
     @GetMapping("/withdraw")
@@ -94,23 +106,27 @@ public class UserController {
         User user = sessionService.sessionUser();
         userService.withdrawCash(form);
         model.addAttribute("user", user);
-        return new ModelAndView("withdraw");
+        return new ModelAndView("index");
     }
 
-    @GetMapping("/add-contact")
-    public ModelAndView showAddContactCash(Model model) {
+    @GetMapping("/contact")
+    public ModelAndView listOfContacts(Model model) {
         User user = sessionService.sessionUser();
+        List<String> linksEmail = contactListService.findLinksEmail();
+        model.addAttribute("linksEmail", linksEmail);
         model.addAttribute("user", user);
-        return new ModelAndView("add-contact", "AddContactForm", new AddContactForm());
+        System.out.println(linksEmail);
+        return new ModelAndView("contact");
+
     }
 
-    @PostMapping("/add-contact")
+    @PostMapping("/contact")
     public ModelAndView addContactCash(Model model, @ModelAttribute("AddContactForm") AddContactForm form) {
         System.out.println(form);
         linkService.addContact(form);
         User user = sessionService.sessionUser();
         model.addAttribute("user", user);
-        return new ModelAndView("add-contact");
+        return new ModelAndView("contact");
     }
 
 

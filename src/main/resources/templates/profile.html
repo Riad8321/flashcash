@@ -17,17 +17,17 @@
                 <img th:src="@{/images/flashcash.png}" width="120" height="60" class="d-inline-block align-top" alt="">
             </a>
             <div class="navbar-nav">
-                <a class="nav-item nav-link active" href="/" th:href="@{/}">Home</a>
+                <a class="nav-item nav-link" href="/" th:href="@{/}">Home</a>
                 <a class="nav-item nav-link" href="/transfers" th:href="@{/transfers}">Transfers</a>
-                <a href="/profile" th:href="@{/profile}" class="nav-item nav-link">Profile</a>
-                <a class="nav-item nav-link" href="#">Contact</a>
+                <a href="/profile" th:href="@{/profile}" class="nav-item nav-link active">Profile</a>
+                <a href="/profile" th:href="@{/contact}" class="nav-item nav-link">Contact</a>
             </div>
         </div>
-        <div class="d-flex align-content-center">
+        <div class="d-flex align-content-center gap-4">
             <a href="/profile" th:href="@{/profile}" class="nav-item nav-link">
                 <p th:text="${user.email}"></p>
-                <a class="nav-item nav-link text-danger" href="#">Log out</a>
             </a>
+            <a class="nav-item nav-link text-danger" href="#">Log out</a>
         </div>
     </nav>
 </header>

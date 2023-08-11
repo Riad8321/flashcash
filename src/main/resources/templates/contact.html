@@ -18,17 +18,17 @@
         <img th:src="@{/images/flashcash.png}" width="120" height="60" class="d-inline-block align-top" alt="">
       </a>
       <div class="navbar-nav">
-        <a class="nav-item nav-link active" href="/" th:href="@{/}">Home</a>
+        <a class="nav-item nav-link" href="/" th:href="@{/}">Home</a>
         <a class="nav-item nav-link" href="/transfers" th:href="@{/transfers}">Transfers</a>
         <a href="/profile" th:href="@{/profile}" class="nav-item nav-link">Profile</a>
-        <a class="nav-item nav-link" href="#">Contact</a>
+        <a href="/profile" th:href="@{/contact}" class="nav-item nav-link  active">Contact</a>
       </div>
     </div>
-    <div class="d-flex align-content-center">
+    <div class="d-flex align-content-center gap-4">
       <a href="/profile" th:href="@{/profile}" class="nav-item nav-link">
         <p th:text="${user.email}"></p>
-        <a class="nav-item nav-link text-danger" href="#">Log out</a>
       </a>
+      <a class="nav-item nav-link text-danger" href="#">Log out</a>
     </div>
   </nav>
 </header>
@@ -36,9 +36,9 @@
 
 <div class="container">
 
-  <h1 class="text-center mt-5 mb-3">Conatct List</h1>
+  <h1 class="text-center mt-5 mb-3">Contact List</h1>
 
-  <form th:action="@{/add-contact}" th:object="${AddContactForm}" method="POST">
+  <form th:action="@{/contact}" th:object="${AddContactForm}" method="POST">
     <div class="container pt-4">
       <div class="row d-flex justify-content-center">
         <div class="col-6">
@@ -61,6 +61,9 @@
     </div>
   </form>
 
+  <tr th:each="email: ${linksEmail}">
+    <td th:text="${email}" />
+  </tr>
   <h2 class="mt-5">Your contact in flash cash</h2>
   <table class="table">
     <thead>
@@ -72,13 +75,8 @@
     </tr>
     </thead>
     <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <!--      th:text="${user != null ? user.account.iban : ''}"-->
-      <!--      <td th:text="${user != null ? user.account.iban : ''}"></td>-->
-      <td>John</td>
-      <td>Doe</td>
-      <td>john.doe@gmail.com</td>
+    <tr th:each="email: ${linksEmail}">
+      <th th:text="${email}">1</th>
     </tr>
     <tr>
     </tbody>

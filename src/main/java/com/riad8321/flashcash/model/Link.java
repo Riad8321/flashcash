@@ -3,7 +3,6 @@ package com.riad8321.flashcash.model;
 import jakarta.persistence.*;
 import lombok.Data;
 
-import java.util.Optional;
 
 @Data
 @Entity
