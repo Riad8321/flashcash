@@ -64,21 +64,23 @@
   <tr th:each="email: ${linksEmail}">
     <td th:text="${email}" />
   </tr>
-  <h2 class="mt-5">Your contact in flash cash</h2>
-  <table class="table">
+  <h4 class="mt-5">Your contacts</h4>
+  <table class="table pt-4">
     <thead>
     <tr>
-      <th scope="col">ID</th>
-      <th scope="col">First Name</th>
-      <th scope="col">Last Name</th>
+      <th scope="col">#</th>
       <th scope="col">Email</th>
+      <th scope="col">First name</th>
+      <th scope="col">Last name</th>
     </tr>
     </thead>
     <tbody>
     <tr th:each="email: ${linksEmail}">
-      <th th:text="${email}">1</th>
+      <th scope="row">1</th>
+      <td th:text="${email}"></td>
+      <td>Otto</td>
+      <td>@mdo</td>
     </tr>
-    <tr>
     </tbody>
   </table>
 

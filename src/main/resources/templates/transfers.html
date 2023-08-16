@@ -37,30 +37,13 @@
 <div class="container">
 
   <h1 class="text-center mt-5 mb-5">Transfers Page</h1>
+<!--  th:field="*{contactEmail}"-->
+  <select  class="form-select col-3 mt-5" aria-label="Default select example">
+<!--    <option value="default">Choose a contact</option>-->
+    <option th:each="email: ${linksEmail}" th:value="${email}" th:utext="${email}" selected>Open this select menu</option>
+  </select>
 
-  <form  th:action="@{/add-iban}" th:object="${addIbanForm}" method="POST">
-    <div class="container pt-4">
-      <div class="row d-flex justify-content-center">
-        <div class="col-6">
-          <img th:src="@{/images/banque.png}" class="mx-auto d-block mb-3"/>
-        </div>
-      </div>
-      <div class="row d-flex justify-content-center">
-        <div class="col-6">
-          <div class="form-group">
-            <!--            <label for="iban">Add you IBAN number</label>-->
-            <input type="text" class="form-control" id="iban" name="iban" placeholder="Add an IBAN">
-          </div>
-
-          <div class="form-group pt-2 pb-1">
-            <input type="submit" value="ADD IBAN" class="btn btn-primary btn-lg">
-          </div>
-        </div>
-      </div>
-    </div>
-  </form>
-
-  <h4>Your transfers</h4>
+  <h4 class="mt-4">Your transfers</h4>
   <table class="table">
     <thead>
     <tr>

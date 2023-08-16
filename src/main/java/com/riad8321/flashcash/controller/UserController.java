@@ -133,6 +133,8 @@ public class UserController {
     @GetMapping(path="/transfers")
     public ModelAndView transfers(Model model) {
         User user = sessionService.sessionUser();
+        List<String> linksEmail = contactListService.findLinksEmail();
+        model.addAttribute("linksEmail", linksEmail);
         model.addAttribute("user", user);
         return new ModelAndView("transfers");
     }
